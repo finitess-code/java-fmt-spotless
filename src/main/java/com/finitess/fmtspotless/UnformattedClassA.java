@@ -1,4 +1,4 @@
-package com.finitess.fmtcosium;
+package com.finitess.fmtspotless;
 
 import java.util.*;
 import org.springframework.beans.factory.annotation.Value;
