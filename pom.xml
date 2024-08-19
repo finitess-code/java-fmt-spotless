@@ -12,6 +12,42 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
+        <google-java-format.version>1.23.0</google-java-format.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+                <configuration>
+                    <!-- optional: limit format enforcement to just the files changed by this feature branch -->
+                    <ratchetFrom>origin/main</ratchetFrom>
+                    <java>
+                        <googleJavaFormat>
+                            <version>${google-java-format.version}</version>
+                            <style>AOSP</style>
+                            <reflowLongStrings>true</reflowLongStrings>
+                            <reorderImports>true</reorderImports>
+                            <formatJavadoc>true</formatJavadoc>
+                        </googleJavaFormat>
+
+                        <importOrder>
+                            <wildcardsLast>false</wildcardsLast>
+                        </importOrder>
+
+                        <removeUnusedImports>
+                            <engine>google-java-format</engine>
+                        </removeUnusedImports>
+
+                        <formatAnnotations/>
+                    </java>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
