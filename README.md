@@ -4,8 +4,11 @@ This is an example on how to format Java code on a `pre-commit` hook using `spot
 Spotless, `google-java-format` formatter from Google, and `git-build-hook-maven-plugin` from rudikershaw to install
 custom Git hooks.
 
+Git hooks should be created manually and then added to Git repo by running `./mvnw install` command.
+
 For more up-to-date information
-check [Spotless GitHub official page](https://github.com/diffplug/spotless).
+check [Spotless GitHub official page](https://github.com/diffplug/spotless)
+and [rudikershaw Git build hook](https://github.com/rudikershaw/git-build-hook).
 
 ## Validate formatting manually
 
@@ -32,10 +35,9 @@ import java.util.UUID;
 
 
 public
-class  UnformattedClassA
-{
+class UnformattedClassA {
 
-    void        hello() {
+    void hello() {
 //        this should return hello
         System.
                 out
@@ -45,10 +47,7 @@ class  UnformattedClassA
 
 }
 
-class SomeInnerClassA
-
-
-{
+class SomeInnerClassA {
 
 }
 ```
@@ -68,7 +67,8 @@ public class UnformattedClassA {
     }
 }
 
-class SomeInnerClassA {}
+class SomeInnerClassA {
+}
 
 ```
 
