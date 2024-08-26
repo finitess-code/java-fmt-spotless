@@ -27,9 +27,11 @@ and [rudikershaw Git build hook](https://github.com/rudikershaw/git-build-hook).
 Before formatting:
 
 ```java
-package com.finitess.fmtcosium;
+package com.finitess.fmtspotless;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.nio.*;
 import org.springframework.beans.factory.annotation.Value;
 import java.util.UUID;
 
@@ -43,6 +45,22 @@ class UnformattedClassA {
                 out
                 .println("hello");
 
+        List.of("1", "2", "3").stream().map(Integer::parseInt)
+
+                .filter(number
+                        ->
+                        number % 2 == 0).map(number
+                        ->
+                        number.toString()).
+
+                collect(Collectors.toSet());
+
+        //spotless:off
+        System.
+                out
+                .println("unformatted stuff");
+        //spotless:on
+
     }
 
 }
@@ -55,15 +73,30 @@ class SomeInnerClassA {
 After formatting:
 
 ```java
-package com.finitess.fmtcosium;
+package com.finitess.fmtspotless;
 
+import java.nio.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UnformattedClassA {
 
     void hello() {
         //        this should return hello
         System.out.println("hello");
+
+        List.of("1", "2", "3").stream()
+                .map(Integer::parseInt)
+                .filter(number -> number % 2 == 0)
+                .map(number -> number.toString())
+                .collect(Collectors.toSet());
+
+        // spotless:off
+        System.
+                out
+                .println("unformatted stuff");
+        //spotless:on
+
     }
 }
 
@@ -77,8 +110,10 @@ class SomeInnerClassA {
 - A choice between incremental and full formatting
 - Elaborate formatting configuration set (also a choice between 3 formatters - Google, Palantir, Eclipse JDT)
 - Explicit control over Git hooks
+- supports formatter off/on sections
 
 ### Cons
 
-- Does not seem to detect/remove wildcard unused imports (but should be possible with some additional configuration)
+- Does not seem to detect/remove wildcard unused imports (both `google-java-format`
+  and `cleanthat-javaparser-unnecessaryimport` are not able to do that)
 - Git hooks need to be installed and maintained manually

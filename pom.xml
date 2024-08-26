@@ -15,6 +15,7 @@
 
         <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
         <google-java-format.version>1.23.0</google-java-format.version>
+        <palantir-java-format.version>2.50.0</palantir-java-format.version>
         <git-build-hook-maven-plugin.version>3.5.0</git-build-hook-maven-plugin.version>
     </properties>
 
@@ -28,20 +29,29 @@
                     <!-- optional: limit format enforcement to just the files changed by this feature branch -->
                     <ratchetFrom>origin/main</ratchetFrom>
                     <java>
-                        <googleJavaFormat>
+                        <!--<googleJavaFormat>
                             <version>${google-java-format.version}</version>
                             <style>AOSP</style>
                             <reflowLongStrings>true</reflowLongStrings>
                             <reorderImports>true</reorderImports>
                             <formatJavadoc>true</formatJavadoc>
-                        </googleJavaFormat>
+                        </googleJavaFormat>-->
+
+                        <palantirJavaFormat>
+                            <version>${palantir-java-format.version}</version>
+                            <style>PALANTIR</style>
+                            <formatJavadoc>true</formatJavadoc>
+                        </palantirJavaFormat>
+
+                        <toggleOffOn/>
 
                         <importOrder>
                             <wildcardsLast>false</wildcardsLast>
                         </importOrder>
 
                         <removeUnusedImports>
-                            <engine>google-java-format</engine>
+                            <!--<engine>google-java-format</engine>-->
+                            <engine>cleanthat-javaparser-unnecessaryimport</engine>
                         </removeUnusedImports>
 
                         <formatAnnotations/>

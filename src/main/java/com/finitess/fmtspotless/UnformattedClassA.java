@@ -1,4 +1,4 @@
-package com.finitess.fmtcosium;
+package com.finitess.fmtspotless;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,9 +19,19 @@ class  UnformattedClassA
 
         List.of("1", "2",     "3").stream().map( Integer::parseInt    )
 
-                .filter(number -> number % 2 == 0).
+                .filter(number
+                        ->
+                        number % 2 == 0).map( number
+                        ->
+                        number.toString()).
 
                 collect(Collectors.toSet());
+
+        //spotless:off
+        System.
+                out
+                .println("unformatted stuff");
+        //spotless:on
 
     }
 
