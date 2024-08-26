@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
+# We want to track only staged files to format them and add them within the same commit again
+staged_files=$(git diff --cached --name-only --diff-filter=ACMR)
 ./mvnw spotless:apply
+git add $staged_files
